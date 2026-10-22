@@ -35,6 +35,17 @@ for (const htmlFile of htmlFiles) {
 }
 
 const serverSource = fs.readFileSync(path.join(root, 'server.js'), 'utf8');
+const sessionMiddlewareIndex = serverSource.indexOf('app.use(cookieSession({');
+const securityMiddlewareIndex = serverSource.indexOf('app.use(securityMiddleware);');
+const firstGuildApiIndex = serverSource.indexOf("app.get('/api/guilds'");
+if (
+  sessionMiddlewareIndex === -1 ||
+  securityMiddlewareIndex < sessionMiddlewareIndex ||
+  firstGuildApiIndex === -1 ||
+  securityMiddlewareIndex > firstGuildApiIndex
+) {
+  missing.push('server.js -> securityMiddleware muss nach cookieSession und vor den API-Routen registriert sein');
+}
 const dashboardRouteIndex = serverSource.indexOf("app.get(['/dashboard.html', '/dashboard']");
 const privateFilesGuardIndex = serverSource.indexOf('const PRIVATE_STATIC_PATHS = new Set([');
 const staticMiddlewareIndex = serverSource.indexOf('app.use(express.static(__dirname, { index: false, dotfiles: \'deny\' }))');
