@@ -191,8 +191,35 @@ app.get(['/dashboard.html', '/dashboard'], (req, res) => {
   res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
 
-// Guarded dashboard route must be registered before static file serving.
-app.use(express.static(__dirname));
+// Repository internals must never be served as public static files.
+const PRIVATE_STATIC_PATHS = new Set([
+  '/.env.example',
+  '/.gitignore',
+  '/README.md',
+  '/main.py',
+  '/package.json',
+  '/requirements.txt',
+  '/security-middleware.js',
+  '/server-secure.js',
+  '/server.js',
+  '/vercel.json'
+]);
+
+app.use((req, res, next) => {
+  const requestPath = req.path;
+  if (
+    PRIVATE_STATIC_PATHS.has(requestPath) ||
+    requestPath.startsWith('/.github/') ||
+    requestPath.startsWith('/docs/') ||
+    requestPath.startsWith('/scripts/')
+  ) {
+    return res.sendStatus(404);
+  }
+  next();
+});
+
+// Keep index.html behind the explicit root route and serve only requested assets.
+app.use(express.static(__dirname, { index: false, dotfiles: 'deny' }));
 
 
 
