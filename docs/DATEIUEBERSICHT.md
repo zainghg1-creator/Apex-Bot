@@ -8,13 +8,13 @@
 ## Backend
 - `server-secure.js`: prüft die Umgebung und lädt den Server.
 - `server.js`: Express-Routen, Discord-Anmeldung und MongoDB; schützt Dashboard-Routen und sperrt interne Dateien vor dem Static-Server.
-- `security-middleware.js`: globale API-Sicherheitsprüfungen, Admin-Berechtigungen, Origin-Prüfung und Rate-Limit.
+- `security-middleware.js`: globale API-Sicherheitsprüfungen, Admin-Berechtigungen, Origin-Prüfung für alle schreibenden Requests und Rate-Limit.
 - `tests/security-middleware.test.js`: Regressionstests für zentrale Sicherheitsfälle.
 - `main.py`: Discord-Bot in Python.
 
 ## Sicherheit
 - `/dashboard` und `/dashboard.html` müssen durch `server-secure.js` laufen, damit der Login-Check greift.
-- Der Static-Server darf keine Backend-Quellen, Konfigurationsdateien oder Ordner wie `docs/` und `scripts/` ausliefern.
+- Der Static-Server darf keine Backend-Quellen, Konfigurationsdateien oder Ordner wie `docs/` und `scripts/` ausliefern. Auf Vercel müssen diese Pfade vor der allgemeinen Static-Route zum Server-Handler geleitet werden.
 - Nach Änderungen an `vercel.json` oder der Reihenfolge von Express-Middleware den Asset- und Routencheck aus `npm run check` ausführen.
 
 ## Vor dem Veröffentlichen
