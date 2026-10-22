@@ -8,7 +8,7 @@ Apex ist ein Discord-Bot mit einer Weboberfläche zur Serververwaltung.
 
 1. Node.js 24 installieren.
 2. Abhängigkeiten installieren: `npm install`
-3. Die nötigen Umgebungsvariablen in `.env` eintragen.
+3. `.env.example` nach `.env` kopieren und die Werte eintragen.
 4. Entwicklungsserver starten: `npm run dev`
 
 Für einen normalen Start: `npm start`.
@@ -17,10 +17,18 @@ Für einen normalen Start: `npm start`.
 
 1. Python und eine virtuelle Umgebung installieren.
 2. Abhängigkeiten installieren: `python -m pip install -r requirements.txt`
-3. Die benötigten Variablen in `.env` setzen.
+3. Die Bot- und Datenbankwerte in `.env` setzen.
 4. Den Bot mit `python main.py` starten.
 
-**Sicherheit:** Tokens, Datenbank-URLs und Sitzungsschlüssel gehören ausschließlich in `.env` oder die Umgebungsvariablen des Hosters. Niemals Geheimnisse committen.
+**Sicherheit:** `.env.example` enthält ausschließlich Platzhalter. Trage echte Tokens, Datenbank-URLs und Sitzungsschlüssel nur in deine lokale `.env` oder die Umgebungsvariablen des Hosters ein. Committe niemals echte Geheimnisse. Für `NODE_ENV=production` muss `SESSION_SECRET` gesetzt sein und mindestens 32 Zeichen lang sein.
+
+## Automatische Prüfungen
+
+- `npm run check` prüft die Syntax der JavaScript-Dateien.
+- `python -m py_compile main.py` prüft die Python-Syntax.
+- GitHub Actions führt beide Prüfungen bei Pushes auf den relevanten Branches und bei Pull Requests aus.
+
+Die Prüfungen prüfen Syntax, nicht die Live-Funktion mit Discord, MongoDB oder OAuth. Dafür sind zusätzliche Tests in der jeweiligen Hosting-Umgebung nötig.
 
 ## Dateiübersicht
 
