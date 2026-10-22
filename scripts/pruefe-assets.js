@@ -27,7 +27,7 @@ for (const htmlFile of htmlFiles) {
   const css = fs.readFileSync(path.join(root, cssFile), 'utf8');
   const extractedClasses = new Set([...html.matchAll(/\b(extracted-inline-(?:dashboard|home)-\d+)\b/g)].map(match => match[1]));
   for (const className of extractedClasses) {
-    const selector = new RegExp('\\\\.' + className + '\\\\.' + className + '\\\\s*\\\\{');
+    const selector = new RegExp('\\.' + className + '\\.' + className + '\\s*\\{');
     if (!selector.test(css)) {
       missing.push(htmlFile + ' -> CSS-Regel fehlt für ' + className + ' in ' + cssFile);
     }
