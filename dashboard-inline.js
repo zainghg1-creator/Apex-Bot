@@ -1,4 +1,14 @@
 (function () {
+    if (new URLSearchParams(window.location.search).get('debug') !== '1') return;
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/eruda';
+    script.onload = function () {
+        if (window.eruda) window.eruda.init();
+    };
+    document.head.appendChild(script);
+})();
+
+(function () {
             var canvas = document.getElementById('starfield');
             if (!canvas) return;
             var ctx = canvas.getContext('2d');
