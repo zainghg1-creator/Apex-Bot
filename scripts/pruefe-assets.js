@@ -36,15 +36,30 @@ for (const htmlFile of htmlFiles) {
 
 const serverSource = fs.readFileSync(path.join(root, 'server.js'), 'utf8');
 const sessionMiddlewareIndex = serverSource.indexOf('app.use(cookieSession({');
+const tokenDecryptIndex = serverSource.indexOf('req.accessToken = decryptAccessToken(req.session?.encryptedAccessToken);');
 const securityMiddlewareIndex = serverSource.indexOf('app.use(securityMiddleware);');
 const firstGuildApiIndex = serverSource.indexOf("app.get('/api/guilds'");
 if (
   sessionMiddlewareIndex === -1 ||
-  securityMiddlewareIndex < sessionMiddlewareIndex ||
+  tokenDecryptIndex < sessionMiddlewareIndex ||
+  securityMiddlewareIndex < tokenDecryptIndex ||
   firstGuildApiIndex === -1 ||
   securityMiddlewareIndex > firstGuildApiIndex
 ) {
-  missing.push('server.js -> securityMiddleware muss nach cookieSession und vor den API-Routen registriert sein');
+  missing.push('server.js -> Token-Entschlüsselung und securityMiddleware müssen nach cookieSession und vor API-Routen laufen');
+}
+if (
+  serverSource.includes('req.session.accessToken') ||
+  serverSource.includes('req.session?.accessToken') ||
+  !serverSource.includes('req.session.encryptedAccessToken = encryptAccessToken(tokenData.access_token)')
+) {
+  missing.push('server.js -> OAuth-Token darf nur verschlüsselt in der Cookie-Session liegen');
+}
+if (
+  !serverSource.includes('const state = createOAuthState();') ||
+  !serverSource.includes('if (!isValidOAuthState(state, expectedState))')
+) {
+  missing.push('server.js -> OAuth-State-Prüfung fehlt');
 }
 const dashboardRouteIndex = serverSource.indexOf("app.get(['/dashboard.html', '/dashboard']");
 const privateFilesGuardIndex = serverSource.indexOf('const PRIVATE_STATIC_PATHS = new Set([');
