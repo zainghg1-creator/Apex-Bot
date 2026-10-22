@@ -132,22 +132,6 @@ function securityMiddleware(req, res, next) {
   next();
 }
 
-function installExpressSecurity(express) {
-  const originalUse = express.application.use;
-  let installed = false;
-  let useCount = 0;
-
-  express.application.use = function patchedUse(...args) {
-    useCount++;
-    const result = originalUse.apply(this, args);
-    if (!installed && useCount === 3) {
-      originalUse.call(this, securityMiddleware);
-      installed = true;
-    }
-    return result;
-  };
-}
-
 function validateEnvironment() {
   if (process.env.NODE_ENV === 'production') {
     const secret = process.env.SESSION_SECRET;
@@ -157,4 +141,4 @@ function validateEnvironment() {
   }
 }
 
-module.exports = { installExpressSecurity, validateEnvironment, securityMiddleware };
+module.exports = { validateEnvironment, securityMiddleware };
