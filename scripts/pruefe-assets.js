@@ -96,7 +96,7 @@ if (vercelConfig) {
     '/.env.example', '/.gitignore', '/README.md', '/main.py',
     '/package.json', '/requirements.txt', '/security-middleware.js',
     '/session-token.js', '/oauth-state.js', '/server-secure.js', '/server.js', '/vercel.json',
-    '/.github/(.*)', '/docs/(.*)', '/scripts/(.*)'
+    '/.github/(.*)', '/docs/(.*)', '/scripts/(.*)', '/backend/(.*)', '/bot/(.*)', '/konfiguration/(.*)', '/tests/(.*)'
   ];
   for (const routePath of privateRoutePatterns) {
     const route = vercelRoutes.find(entry => entry.src === routePath);
