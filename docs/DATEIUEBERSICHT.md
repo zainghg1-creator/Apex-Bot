@@ -9,6 +9,8 @@
 - `server-secure.js`: prüft die Umgebung und lädt den Server.
 - `server.js`: Express-Routen, Discord-Anmeldung und MongoDB; schützt Dashboard-Routen und sperrt interne Dateien vor dem Static-Server.
 - `security-middleware.js`: globale API-Sicherheitsprüfungen, Admin-Berechtigungen, Origin-Prüfung für alle schreibenden Requests und Rate-Limit.
+- `session-token.js`: verschlüsselt OAuth-Zugriffstoken mit AES-256-GCM, damit sie nicht lesbar im signierten Cookie liegen.
+- `oauth-state.js`: erzeugt und vergleicht OAuth-State-Werte zur Abwehr von Login-CSRF.
 - `tests/security-middleware.test.js`: Regressionstests für zentrale Sicherheitsfälle.
 - `main.py`: Discord-Bot in Python.
 
