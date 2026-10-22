@@ -233,7 +233,11 @@ app.use((req, res, next) => {
     PRIVATE_STATIC_PATHS.has(requestPath) ||
     requestPath.startsWith('/.github/') ||
     requestPath.startsWith('/docs/') ||
-    requestPath.startsWith('/scripts/')
+    requestPath.startsWith('/scripts/') ||
+    requestPath.startsWith('/backend/') ||
+    requestPath.startsWith('/bot/') ||
+    requestPath.startsWith('/konfiguration/') ||
+    requestPath.startsWith('/tests/')
   ) {
     return res.sendStatus(404);
   }
