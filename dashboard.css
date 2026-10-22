@@ -2442,43 +2442,43 @@
 
 
 /* Aus HTML extrahierte Inline-Styles */
-.extracted-inline-dashboard-1 { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)) !important; gap: 12px !important; }
-.extracted-inline-dashboard-2 { background: var(--bg-surface) !important; border: 1px solid var(--border-subtle) !important; border-radius: 10px !important; padding: 1rem !important; }
-.extracted-inline-dashboard-3 { font-size: 0.65rem !important; text-transform: uppercase !important; color: var(--text-muted) !important; font-weight: 600 !important; }
-.extracted-inline-dashboard-4 { font-size: 1.3rem !important; font-weight: 800 !important; font-family: 'JetBrains Mono',monospace !important; }
-.extracted-inline-dashboard-5 { font-size: 0.9rem !important; font-weight: 700 !important; }
-.extracted-inline-dashboard-6 { font-size: 0.9rem !important; font-weight: 700 !important; display: flex !important; align-items: center !important; gap: 6px !important; }
-.extracted-inline-dashboard-7 { width: 24px !important; height: 24px !important; border-radius: 50% !important; }
-.extracted-inline-dashboard-8 { font-size: 0.9rem !important; font-weight: 600 !important; display: flex !important; align-items: center !important; gap: 6px !important; }
-.extracted-inline-dashboard-9 { display: flex !important; gap: 6px !important; border-bottom: 1px solid var(--border-subtle) !important; margin-bottom: 1rem !important; flex-wrap: wrap !important; }
-.extracted-inline-dashboard-10 { background: transparent !important; border: none !important; color: var(--text-muted) !important; padding: 6px 2px !important; font-size: 0.75rem !important; font-weight: 700 !important; cursor: pointer !important; border-bottom: 2px solid transparent !important; transition: all 0.2s !important; }
-.extracted-inline-dashboard-11 { margin-top: 1rem !important; background: var(--bg-surface) !important; border-radius: 10px !important; padding: 14px !important; border: 1px solid var(--border-subtle) !important; }
-.extracted-inline-dashboard-12 { font-size: 0.75rem !important; font-weight: 600 !important; color: var(--text-muted) !important; display: block !important; margin-bottom: 6px !important; }
-.extracted-inline-dashboard-13 { border-left-color: #ffffff !important; }
-.extracted-inline-dashboard-14 { display: inline-flex !important; align-items: center !important; gap: 4px !important; color: var(--text-muted) !important; text-decoration: none !important; font-weight: 600 !important; font-size: 0.8rem !important; margin-bottom: 1rem !important; transition: color 0.2s !important; }
-.extracted-inline-dashboard-15 { margin-bottom: 16px !important; }
-.extracted-inline-dashboard-16 { display: block !important; margin-top: 6px !important; }
-.extracted-inline-dashboard-17 { font-size: 1rem !important; font-weight: 700 !important; margin-bottom: 4px !important; }
-.extracted-inline-dashboard-18 { color: var(--text-muted) !important; font-size: 0.85rem !important; margin-bottom: 8px !important; }
-.extracted-inline-dashboard-19 { display: block !important; margin-bottom: 6px !important; }
-.extracted-inline-dashboard-20 { display: flex !important; flex-direction: column !important; gap: 10px !important; }
-.extracted-inline-dashboard-21 { font-size: 0.7rem !important; font-weight: 600 !important; color: var(--text-muted) !important; display: block !important; margin-bottom: 4px !important; }
-.extracted-inline-dashboard-22 { margin-top: 14px !important; }
-.extracted-inline-dashboard-23 { display: block !important; margin-bottom: 8px !important; }
-.extracted-inline-dashboard-24 { border-top: 1px solid var(--border-subtle) !important; margin: 1rem 0 0.5rem !important; padding-top: 1rem !important; }
-.extracted-inline-dashboard-25 { font-weight: 700 !important; margin-bottom: 0.5rem !important; }
-.extracted-inline-dashboard-26 { margin-top: 0 !important; }
-.extracted-inline-dashboard-27 { margin-top: 0.5rem !important; background: var(--bg-surface) !important; border-radius: 10px !important; padding: 14px !important; border: 1px solid var(--border-subtle) !important; }
-.extracted-inline-dashboard-28 { border-left-color: #5865f2 !important; }
-.extracted-inline-dashboard-29 { margin-top: 1rem !important; }
-.extracted-inline-dashboard-30 { border-left-color: #ed4245 !important; }
-.extracted-inline-dashboard-31 { margin-top: 6px !important; }
-.extracted-inline-dashboard-32 { font-size: 1rem !important; font-weight: 700 !important; margin-bottom: 6px !important; }
-.extracted-inline-dashboard-33 { margin-top: 16px !important; }
-.extracted-inline-dashboard-34 { margin-top: 8px !important; }
-.extracted-inline-dashboard-35 { font-size: 0.85rem !important; color: var(--text-muted) !important; }
-.extracted-inline-dashboard-36 { display: block !important; width: 100% !important; margin-top: 6px !important; }
-.extracted-inline-dashboard-37 { border-color: var(--border-subtle) !important; margin: 1rem 0 !important; }
-.extracted-inline-dashboard-38 { font-size: 0.9rem !important; font-weight: 700 !important; margin-bottom: 0.5rem !important; }
-.extracted-inline-dashboard-39 { display: none !important; }
-.extracted-inline-dashboard-40 { background: var(--bg-surface) !important; border-radius: 10px !important; padding: 14px !important; border: 1px solid var(--border-subtle) !important; margin-top: 0.5rem !important; }
+.extracted-inline-dashboard-1.extracted-inline-dashboard-1 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 12px; }
+.extracted-inline-dashboard-2.extracted-inline-dashboard-2 { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 1rem; }
+.extracted-inline-dashboard-3.extracted-inline-dashboard-3 { font-size: 0.65rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; }
+.extracted-inline-dashboard-4.extracted-inline-dashboard-4 { font-size: 1.3rem; font-weight: 800; font-family: 'JetBrains Mono',monospace; }
+.extracted-inline-dashboard-5.extracted-inline-dashboard-5 { font-size: 0.9rem; font-weight: 700; }
+.extracted-inline-dashboard-6.extracted-inline-dashboard-6 { font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.extracted-inline-dashboard-7.extracted-inline-dashboard-7 { width: 24px; height: 24px; border-radius: 50%; }
+.extracted-inline-dashboard-8.extracted-inline-dashboard-8 { font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.extracted-inline-dashboard-9.extracted-inline-dashboard-9 { display: flex; gap: 6px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 1rem; flex-wrap: wrap; }
+.extracted-inline-dashboard-10.extracted-inline-dashboard-10 { background: transparent; border: none; color: var(--text-muted); padding: 6px 2px; font-size: 0.75rem; font-weight: 700; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
+.extracted-inline-dashboard-11.extracted-inline-dashboard-11 { margin-top: 1rem; background: var(--bg-surface); border-radius: 10px; padding: 14px; border: 1px solid var(--border-subtle); }
+.extracted-inline-dashboard-12.extracted-inline-dashboard-12 { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 6px; }
+.extracted-inline-dashboard-13.extracted-inline-dashboard-13 { border-left-color: #ffffff; }
+.extracted-inline-dashboard-14.extracted-inline-dashboard-14 { display: inline-flex; align-items: center; gap: 4px; color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 0.8rem; margin-bottom: 1rem; transition: color 0.2s; }
+.extracted-inline-dashboard-15.extracted-inline-dashboard-15 { margin-bottom: 16px; }
+.extracted-inline-dashboard-16.extracted-inline-dashboard-16 { display: block; margin-top: 6px; }
+.extracted-inline-dashboard-17.extracted-inline-dashboard-17 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.extracted-inline-dashboard-18.extracted-inline-dashboard-18 { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px; }
+.extracted-inline-dashboard-19.extracted-inline-dashboard-19 { display: block; margin-bottom: 6px; }
+.extracted-inline-dashboard-20.extracted-inline-dashboard-20 { display: flex; flex-direction: column; gap: 10px; }
+.extracted-inline-dashboard-21.extracted-inline-dashboard-21 { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px; }
+.extracted-inline-dashboard-22.extracted-inline-dashboard-22 { margin-top: 14px; }
+.extracted-inline-dashboard-23.extracted-inline-dashboard-23 { display: block; margin-bottom: 8px; }
+.extracted-inline-dashboard-24.extracted-inline-dashboard-24 { border-top: 1px solid var(--border-subtle); margin: 1rem 0 0.5rem; padding-top: 1rem; }
+.extracted-inline-dashboard-25.extracted-inline-dashboard-25 { font-weight: 700; margin-bottom: 0.5rem; }
+.extracted-inline-dashboard-26.extracted-inline-dashboard-26 { margin-top: 0; }
+.extracted-inline-dashboard-27.extracted-inline-dashboard-27 { margin-top: 0.5rem; background: var(--bg-surface); border-radius: 10px; padding: 14px; border: 1px solid var(--border-subtle); }
+.extracted-inline-dashboard-28.extracted-inline-dashboard-28 { border-left-color: #5865f2; }
+.extracted-inline-dashboard-29.extracted-inline-dashboard-29 { margin-top: 1rem; }
+.extracted-inline-dashboard-30.extracted-inline-dashboard-30 { border-left-color: #ed4245; }
+.extracted-inline-dashboard-31.extracted-inline-dashboard-31 { margin-top: 6px; }
+.extracted-inline-dashboard-32.extracted-inline-dashboard-32 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.extracted-inline-dashboard-33.extracted-inline-dashboard-33 { margin-top: 16px; }
+.extracted-inline-dashboard-34.extracted-inline-dashboard-34 { margin-top: 8px; }
+.extracted-inline-dashboard-35.extracted-inline-dashboard-35 { font-size: 0.85rem; color: var(--text-muted); }
+.extracted-inline-dashboard-36.extracted-inline-dashboard-36 { display: block; width: 100%; margin-top: 6px; }
+.extracted-inline-dashboard-37.extracted-inline-dashboard-37 { border-color: var(--border-subtle); margin: 1rem 0; }
+.extracted-inline-dashboard-38.extracted-inline-dashboard-38 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
+.extracted-inline-dashboard-39.extracted-inline-dashboard-39 { display: none; }
+.extracted-inline-dashboard-40.extracted-inline-dashboard-40 { background: var(--bg-surface); border-radius: 10px; padding: 14px; border: 1px solid var(--border-subtle); margin-top: 0.5rem; }
