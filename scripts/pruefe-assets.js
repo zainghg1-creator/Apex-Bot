@@ -69,10 +69,24 @@ try {
 }
 
 if (vercelConfig) {
+  const vercelRoutes = vercelConfig.routes || [];
   for (const routePath of ['/dashboard', '/dashboard.html']) {
-    const route = (vercelConfig.routes || []).find(entry => entry.src === routePath);
+    const route = vercelRoutes.find(entry => entry.src === routePath);
     if (!route || route.dest !== '/server-secure.js') {
       missing.push('vercel.json -> ' + routePath + ' muss durch server-secure.js laufen');
+    }
+  }
+
+  const privateRoutePatterns = [
+    '/.env.example', '/.gitignore', '/README.md', '/main.py',
+    '/package.json', '/requirements.txt', '/security-middleware.js',
+    '/server-secure.js', '/server.js', '/vercel.json',
+    '/.github/(.*)', '/docs/(.*)', '/scripts/(.*)'
+  ];
+  for (const routePath of privateRoutePatterns) {
+    const route = vercelRoutes.find(entry => entry.src === routePath);
+    if (!route || route.dest !== '/server-secure.js') {
+      missing.push('vercel.json -> interne Route fehlt oder ist nicht geschützt: ' + routePath);
     }
   }
 }
