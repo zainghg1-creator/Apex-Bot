@@ -294,72 +294,72 @@
             <div id="mod-overview" class="module-page">
                 <h2>Übersicht</h2>
                 <p>Behalte Mitglieder, Boosts und weitere wichtige statistiken Aktivität und wichtige Statistiken im Blick.</p>
-                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap:12px;">
+                <div class="extracted-inline-dashboard-1">
                     <div
-                        style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                        class="extracted-inline-dashboard-2">
                         <div
-                            style="font-size:0.65rem; text-transform:uppercase; color:var(--text-muted); font-weight:600;">
+                            class="extracted-inline-dashboard-3">
                             👥 Mitglieder</div>
                         <p id="overview-members"
-                            style="font-size:1.3rem; font-weight:800; font-family:'JetBrains Mono',monospace;">N/A</p>
+                            class="extracted-inline-dashboard-4">N/A</p>
                     </div>
                     <div
-                        style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                        class="extracted-inline-dashboard-2">
                         <div
-                            style="font-size:0.65rem; text-transform:uppercase; color:var(--text-muted); font-weight:600;">
+                            class="extracted-inline-dashboard-3">
                             💎 Boosts</div>
                         <p id="overview-boosts"
-                            style="font-size:1.3rem; font-weight:800; font-family:'JetBrains Mono',monospace;">N/A</p>
+                            class="extracted-inline-dashboard-4">N/A</p>
                     </div>
                     <div
-                        style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                        class="extracted-inline-dashboard-2">
                         <div
-                            style="font-size:0.65rem; text-transform:uppercase; color:var(--text-muted); font-weight:600;">
+                            class="extracted-inline-dashboard-3">
                             🤖 Bots</div>
                         <p id="overview-bots"
-                            style="font-size:1.3rem; font-weight:800; font-family:'JetBrains Mono',monospace;">N/A</p>
+                            class="extracted-inline-dashboard-4">N/A</p>
                     </div>
                     <div
-                        style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                        class="extracted-inline-dashboard-2">
                         <div
-                            style="font-size:0.65rem; text-transform:uppercase; color:var(--text-muted); font-weight:600;">
+                            class="extracted-inline-dashboard-3">
                             📁 Kanäle</div>
                         <p id="overview-channels"
-                            style="font-size:1.3rem; font-weight:800; font-family:'JetBrains Mono',monospace;">N/A</p>
+                            class="extracted-inline-dashboard-4">N/A</p>
                     </div>
                     <div
-                        style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                        class="extracted-inline-dashboard-2">
                         <div
-                            style="font-size:0.65rem; text-transform:uppercase; color:var(--text-muted); font-weight:600;">
+                            class="extracted-inline-dashboard-3">
                             🎭 Rollen Anzahl</div>
                         <p id="overview-roles"
-                            style="font-size:1.3rem; font-weight:800; font-family:'JetBrains Mono',monospace;">N/A</p>
+                            class="extracted-inline-dashboard-4">N/A</p>
                     </div>
                     <div
-                        style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                        class="extracted-inline-dashboard-2">
                         <div
-                            style="font-size:0.65rem; text-transform:uppercase; color:var(--text-muted); font-weight:600;">
+                            class="extracted-inline-dashboard-3">
                             📅 Erstellt am</div>
-                        <p id="overview-created" style="font-size:0.9rem; font-weight:700;">N/A</p>
+                        <p id="overview-created" class="extracted-inline-dashboard-5">N/A</p>
                     </div>
                     <div
-                        style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                        class="extracted-inline-dashboard-2">
                         <div
-                            style="font-size:0.65rem; text-transform:uppercase; color:var(--text-muted); font-weight:600;">
+                            class="extracted-inline-dashboard-3">
                             👑 Inhaber des Servers</div>
                         <p id="overview-owner"
-                            style="font-size:0.9rem; font-weight:700; display:flex; align-items:center; gap:6px;">
-                            <img id="overview-owner-avatar" class="hidden" src="" alt=""
-                                style="width:24px;height:24px;border-radius:50%;">
+                            class="extracted-inline-dashboard-6">
+                            <img id="overview-owner-avatar" class="hidden extracted-inline-dashboard-7" src="" alt=""
+                               >
                             <span id="overview-owner-name">N/A</span>
                         </p>
                     </div>
                     <div
-                        style="background:var(--bg-surface); border:1px solid var(--border-subtle); border-radius:10px; padding:1rem;">
+                        class="extracted-inline-dashboard-2">
                         <div
-                            style="font-size:0.65rem; text-transform:uppercase; color:var(--text-muted); font-weight:600;">
+                            class="extracted-inline-dashboard-3">
                             🟢 Bot Status</div>
-                        <p style="font-size:0.9rem; font-weight:600; display:flex; align-items:center; gap:6px;"><span
+                        <p class="extracted-inline-dashboard-8"><span
                                 class="status-dot online"></span> Online</p>
                     </div>
                 </div>
@@ -370,11 +370,11 @@
                 <h2>👋 Willkommen</h2>
                 <p>Der Bot versendet eine Nachricht, sobald ein Mitglied dem Server beitritt oder ihn verlässt.</p>
                 <div
-                    style="display:flex; gap:6px; border-bottom:1px solid var(--border-subtle); margin-bottom:1rem; flex-wrap:wrap;">
-                    <button class="subtab-btn active" data-sub="join" onclick="switchSubtab('welcome','join')"
-                        style="background:transparent; border:none; color:var(--text-muted); padding:6px 2px; font-size:0.75rem; font-weight:700; cursor:pointer; border-bottom:2px solid transparent; transition:all 0.2s;">Beitritt</button>
-                    <button class="subtab-btn" data-sub="leave" onclick="switchSubtab('welcome','leave')"
-                        style="background:transparent; border:none; color:var(--text-muted); padding:6px 2px; font-size:0.75rem; font-weight:700; cursor:pointer; border-bottom:2px solid transparent; transition:all 0.2s;">Verlassen</button>
+                    class="extracted-inline-dashboard-9">
+                    <button class="subtab-btn active extracted-inline-dashboard-10" data-sub="join" onclick="switchSubtab('welcome','join')"
+                       >Beitritt</button>
+                    <button class="subtab-btn extracted-inline-dashboard-10" data-sub="leave" onclick="switchSubtab('welcome','leave')"
+                       >Verlassen</button>
                 </div>
                 
                 <div id="welcome-join-page" class="subpage">
@@ -430,11 +430,11 @@
                                 onclick="handleSaveClick('welcome')">Speichern</button></div>
                     </div>
                     <div
-                        style="margin-top:1rem; background:var(--bg-surface); border-radius:10px; padding:14px; border:1px solid var(--border-subtle);">
+                        class="extracted-inline-dashboard-11">
                         <label
-                            style="font-size:0.75rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:6px;">📺
+                            class="extracted-inline-dashboard-12">📺
                             Live-Vorschau</label>
-                        <div class="embed-preview" id="join-preview" style="border-left-color:#ffffff;">
+                        <div class="embed-preview extracted-inline-dashboard-13" id="join-preview">
                             <div class="embed-preview-title" id="join-preview-title">Willkommen auf {server}! 🎉</div>
                             <div class="embed-preview-desc" id="join-preview-desc">Hey {user}, schön dass du da bist!
                             </div>
@@ -492,11 +492,11 @@
                                 onclick="handleSaveClick('welcome')">Speichern</button></div>
                     </div>
                     <div
-                        style="margin-top:1rem; background:var(--bg-surface); border-radius:10px; padding:14px; border:1px solid var(--border-subtle);">
+                        class="extracted-inline-dashboard-11">
                         <label
-                            style="font-size:0.75rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:6px;">📺
+                            class="extracted-inline-dashboard-12">📺
                             Live-Vorschau</label>
-                        <div class="embed-preview" id="leave-preview" style="border-left-color:#ffffff;">
+                        <div class="embed-preview extracted-inline-dashboard-13" id="leave-preview">
                             <div class="embed-preview-title" id="leave-preview-title">Auf Wiedersehen 👋</div>
                             <div class="embed-preview-desc" id="leave-preview-desc">{username} hat den Server verlassen.
                             </div>
@@ -519,9 +519,9 @@
 
                 <div id="ticket-edit-container" class="edit-view hidden">
                     <a href="#" onclick="closeEditView(); return false;"
-                        style="display:inline-flex; align-items:center; gap:4px; color:var(--text-muted); text-decoration:none; font-weight:600; font-size:0.8rem; margin-bottom:1rem; transition:color 0.2s;">←
+                        class="extracted-inline-dashboard-14">←
                         Zurück zur Übersicht</a>
-                    <div id="edit-panel-header" style="margin-bottom:16px;"></div>
+                    <div id="edit-panel-header" class="extracted-inline-dashboard-15"></div>
                     <div id="ticket-edit-content"></div>
                 </div>
             </div>
@@ -558,7 +558,7 @@
                     </div>
                     <div class="form-group"><label for="teamliste-roblox-channel">Roblox-Namen-Kanal</label><select
                             id="teamliste-roblox-channel"></select>
-                        <small style="display:block; margin-top:6px;">Schreibt jemand in diesem Kanal seinen
+                        <small class="extracted-inline-dashboard-16">Schreibt jemand in diesem Kanal seinen
                             Roblox-Namen, reagiert der Bot mit ✅, löscht die Nachricht und zeigt den Namen danach
                             hinter dem Mitglied in der Teamliste an. Ist der Schalter oben aus, passiert im Kanal
                             nichts und es wird auch kein Roblox-Name in der Teamliste angezeigt.</small>
@@ -588,8 +588,8 @@
                 </div>
 
                 <div class="panel-card">
-                    <h3 style="font-size:1rem; font-weight:700; margin-bottom:4px;">🚫 Spam-Schutz</h3>
-                    <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:8px;">Löst aus, wenn ein
+                    <h3 class="extracted-inline-dashboard-17">🚫 Spam-Schutz</h3>
+                    <p class="extracted-inline-dashboard-18">Löst aus, wenn ein
                         Mitglied zu viele Nachrichten in kurzer Zeit schreibt.</p>
                     <div class="form-group">
                         <div class="switch-row"><label>Spam-Schutz aktiv</label><label class="switch"><input
@@ -620,8 +620,8 @@
                 </div>
 
                 <div class="panel-card">
-                    <h3 style="font-size:1rem; font-weight:700; margin-bottom:4px;">🔗 Link-Filter</h3>
-                    <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:8px;">Legt fest, ob Links im
+                    <h3 class="extracted-inline-dashboard-17">🔗 Link-Filter</h3>
+                    <p class="extracted-inline-dashboard-18">Legt fest, ob Links im
                         Server erlaubt sind.</p>
                     <div class="form-group">
                         <div class="switch-row"><label>Links blockieren (nicht erlaubt)</label><label
@@ -642,8 +642,8 @@
                 </div>
 
                 <div class="panel-card">
-                    <h3 style="font-size:1rem; font-weight:700; margin-bottom:4px;">✅ Whitelist</h3>
-                    <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:8px;">Kanäle, Rollen und Nutzer,
+                    <h3 class="extracted-inline-dashboard-17">✅ Whitelist</h3>
+                    <p class="extracted-inline-dashboard-18">Kanäle, Rollen und Nutzer,
                         die vom Automod ausgenommen sind. Server-Administratoren sind immer automatisch ausgenommen.</p>
                     <div class="form-group">
                         <label>Ausgenommene Kanäle</label>
@@ -682,8 +682,8 @@
                 </div>
 
                 <div class="panel-card">
-                    <h3 style="font-size:1rem; font-weight:700; margin-bottom:4px;">Befehle</h3>
-                    <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:8px;">Aktiviere oder deaktiviere
+                    <h3 class="extracted-inline-dashboard-17">Befehle</h3>
+                    <p class="extracted-inline-dashboard-18">Aktiviere oder deaktiviere
                         Befehle und lege fest, wer sie verwenden darf.</p>
                     <div class="command-list" id="teamupdate-commands">
                         <div class="command-row" data-command="neuer_teamler">
@@ -707,7 +707,7 @@
                                 <div class="form-group"><label for="cmd-neuer_teamler-channel">Kanal für die
                                         Nachricht</label><select id="cmd-neuer_teamler-channel"></select></div>
                                 <div class="form-group"><label>Rollen, die IMMER hinzugefügt werden</label><small
-                                        style="display:block; margin-bottom:6px;">Diese Rollen werden bei jeder Nutzung
+                                        class="extracted-inline-dashboard-19">Diese Rollen werden bei jeder Nutzung
                                         von /neuer_teamler zusätzlich automatisch vergeben.</small>
                                     <div class="chip-select" id="cmdrole-neuer_teamler-auto"><span
                                             class="chip-empty">Lade Rollen...</span></div>
@@ -782,7 +782,7 @@
                                 <div class="form-group"><label for="cmd-teamkick-channel">Kanal für die
                                         Nachricht</label><select id="cmd-teamkick-channel"></select></div>
                                 <div class="form-group"><label>Rollen, die IMMER entfernt werden</label><small
-                                        style="display:block; margin-bottom:6px;">Diese Rollen werden bei jeder Nutzung
+                                        class="extracted-inline-dashboard-19">Diese Rollen werden bei jeder Nutzung
                                         von /teamkick zusätzlich automatisch entfernt.</small>
                                     <div class="chip-select" id="cmdrole-teamkick-auto"><span class="chip-empty">Lade
                                             Rollen...</span></div>
@@ -812,29 +812,29 @@
                                         Nachricht</label><select id="cmd-teamwarn-channel"></select></div>
                                 <div class="form-group">
                                     <label>Warnstufen (optional)</label>
-                                    <small style="display:block; margin-bottom:6px;">Lege bis zu vier Rollen fest, die
+                                    <small class="extracted-inline-dashboard-19">Lege bis zu vier Rollen fest, die
                                         bei den jeweiligen Warnstufen automatisch vergeben werden.</small>
-                                    <div style="display:flex; flex-direction:column; gap:10px;">
+                                    <div class="extracted-inline-dashboard-20">
                                         <div><label for="cmdrole-teamwarn-stage1"
-                                                style="font-size:0.7rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:4px;">Warnstufe
+                                                class="extracted-inline-dashboard-21">Warnstufe
                                                 1</label>
                                             <div class="chip-select" id="cmdrole-teamwarn-stage1"><span
                                                     class="chip-empty">Lade Rollen...</span></div>
                                         </div>
                                         <div><label for="cmdrole-teamwarn-stage2"
-                                                style="font-size:0.7rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:4px;">Warnstufe
+                                                class="extracted-inline-dashboard-21">Warnstufe
                                                 2</label>
                                             <div class="chip-select" id="cmdrole-teamwarn-stage2"><span
                                                     class="chip-empty">Lade Rollen...</span></div>
                                         </div>
                                         <div><label for="cmdrole-teamwarn-stage3"
-                                                style="font-size:0.7rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:4px;">Warnstufe
+                                                class="extracted-inline-dashboard-21">Warnstufe
                                                 3</label>
                                             <div class="chip-select" id="cmdrole-teamwarn-stage3"><span
                                                     class="chip-empty">Lade Rollen...</span></div>
                                         </div>
                                         <div><label for="cmdrole-teamwarn-stage4"
-                                                style="font-size:0.7rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:4px;">Warnstufe
+                                                class="extracted-inline-dashboard-21">Warnstufe
                                                 4</label>
                                             <div class="chip-select" id="cmdrole-teamwarn-stage4"><span
                                                     class="chip-empty">Lade Rollen...</span></div>
@@ -884,7 +884,7 @@
                     </div>
                     <div class="form-group">
                         <label>Buttons unter dem Embed</label>
-                        <small style="display:block; margin-bottom:6px;">Lege fest, welche Hilfe-Buttons unter der
+                        <small class="extracted-inline-dashboard-19">Lege fest, welche Hilfe-Buttons unter der
                             Flagge angezeigt werden.</small>
                         <div class="switch-row"><label>⏭️ Überspringen</label><label class="switch"><input
                                     type="checkbox" id="minigames-flags-btn-skip" checked><span
@@ -916,7 +916,7 @@
                     </div>
                     <div class="form-group">
                         <label>Buttons unter dem Embed</label>
-                        <small style="display:block; margin-bottom:6px;">Lege fest, welche Hilfe-Buttons unter der
+                        <small class="extracted-inline-dashboard-19">Lege fest, welche Hilfe-Buttons unter der
                             Emoji-Kombination angezeigt werden.</small>
                         <div class="switch-row"><label>⏭️ Überspringen</label><label class="switch"><input
                                     type="checkbox" id="minigames-emoji-btn-skip" checked><span
@@ -950,7 +950,7 @@
                     <div id="stats-channels-list"></div>
                     <button type="button" class="add-option-btn" onclick="addStatsChannel()">+ Statistik-Kanal
                         hinzufügen</button>
-                    <div class="form-action" style="margin-top:14px;">
+                    <div class="form-action extracted-inline-dashboard-22">
                         <span id="stats-save-status" class="hidden status-success"></span>
                         <button class="btn btn-primary" onclick="handleSaveClick('stats')">💾 Speichern</button>
                     </div>
@@ -1055,7 +1055,7 @@
                 <div class="panel-card">
                     <div class="tpe-card-title">🎁 Level-Rollen</div>
                     <div class="form-group">
-                        <small style="display:block; margin-bottom:8px;">Lege fest, ab welchem Level welche Rolle
+                        <small class="extracted-inline-dashboard-23">Lege fest, ab welchem Level welche Rolle
                             automatisch vergeben wird. Erreicht ein Mitglied das Level, bekommt es die Rolle
                             automatisch (frühere Level-Rollen bleiben zusätzlich erhalten).</small>
                         <div id="levels-role-rewards-list"></div>
@@ -1103,15 +1103,15 @@
                     </div>
                     <div class="form-group">
                         <label>Rollen nach Verifizierung entfernen (optional)</label>
-                        <small style="display:block; margin-bottom:6px;">Diese Rollen werden dem Mitglied automatisch
+                        <small class="extracted-inline-dashboard-19">Diese Rollen werden dem Mitglied automatisch
                             entzogen, sobald es sich erfolgreich verifiziert hat (z.B. eine
                             "Unverifiziert"-Rolle).</small>
                         <div id="verification-remove-roles" class="chip-select"><span class="chip-empty">Lade
                                 Rollen...</span></div>
                     </div>
 
-                    <div style="border-top:1px solid var(--border-subtle); margin:1rem 0 0.5rem; padding-top:1rem;">
-                        <div style="font-weight:700; margin-bottom:0.5rem;">📝 Embed anpassen</div>
+                    <div class="extracted-inline-dashboard-24">
+                        <div class="extracted-inline-dashboard-25">📝 Embed anpassen</div>
                         <div class="form-group">
                             <label>Titel</label>
                             <input type="text" id="verification-title" placeholder="🔐 Verifizierung">
@@ -1157,7 +1157,7 @@
                 <button type="button" class="add-option-btn" onclick="addReactionRolePanel()">+ Neue Reaction-Role
                     Nachricht</button>
 
-                <div class="form-action" style="margin-top:14px;">
+                <div class="form-action extracted-inline-dashboard-22">
                     <span id="reactionroles-save-status" class="hidden status-success"></span>
                     <button class="btn btn-primary" onclick="handleSaveClick('reactionroles')">💾 Speichern</button>
                 </div>
@@ -1235,7 +1235,7 @@
                 <div class="panel-card">
                     <div class="form-group">
                         <label>Rollen, die Schichten anderer verwalten dürfen</label>
-                        <small style="display:block; margin-bottom:6px;">Diese Rollen dürfen /shift start, pause und
+                        <small class="extracted-inline-dashboard-19">Diese Rollen dürfen /shift start, pause und
                             stop auch für andere Mitglieder benutzen und sehen die Schicht-Bestenliste
                             (/shift leaderboard).</small>
                         <div class="chip-select" id="shiftsystem-manage-others"><span class="chip-empty">Lade
@@ -1243,7 +1243,7 @@
                     </div>
                     <div class="form-group">
                         <label>Rolle, die nur die eigene Schicht verwalten darf</label>
-                        <small style="display:block; margin-bottom:6px;">Mitglieder mit dieser Rolle können nur ihre
+                        <small class="extracted-inline-dashboard-19">Mitglieder mit dieser Rolle können nur ihre
                             eigene Schicht starten, pausieren und beenden.</small>
                         <div class="chip-select" id="shiftsystem-manage-self"><span class="chip-empty">Lade
                                 Rollen...</span></div>
@@ -1251,7 +1251,7 @@
                 </div>
 
                 <div class="panel-card">
-                    <h3 style="margin-top:0;">Schichtarten</h3>
+                    <h3 class="extracted-inline-dashboard-26">Schichtarten</h3>
                     <p>Lege verschiedene Schichtarten an (z. B. Polizei, Feuerwehr, Rettungsdienst) und wähle pro
                         Schichtart, welche Rolle(n) sie starten dürfen. Beim <code>/shift start</code> kann dann die
                         passende Schichtart ausgewählt werden. Bleibt eine Schichtart ohne Rollen, darf sie jeder mit
@@ -1288,13 +1288,13 @@
                     <div class="form-group">
                         <label for="abmeldesystem-panel-channel">Kanal für das Abmelde-Panel</label>
                         <select id="abmeldesystem-panel-channel"></select>
-                        <small style="display:block; margin-top:6px;">Hier wird die Nachricht mit den 2 Buttons
+                        <small class="extracted-inline-dashboard-16">Hier wird die Nachricht mit den 2 Buttons
                             "Abmeldung erstellen" und "Anmelden" gepostet.</small>
                     </div>
                     <div class="form-group">
                         <label for="abmeldesystem-log-channel">Kanal für die Abmeldungs-Übersicht</label>
                         <select id="abmeldesystem-log-channel"></select>
-                        <small style="display:block; margin-top:6px;">Hier sieht das Team, wer sich von wann bis wann
+                        <small class="extracted-inline-dashboard-16">Hier sieht das Team, wer sich von wann bis wann
                             und aus welchem Grund abgemeldet hat.</small>
                     </div>
                     <div class="form-group">
@@ -1303,7 +1303,7 @@
                     </div>
                     <div class="form-group">
                         <label>Rolle für abgemeldete Mitglieder</label>
-                        <small style="display:block; margin-bottom:6px;">Wird automatisch vergeben, sobald jemand
+                        <small class="extracted-inline-dashboard-19">Wird automatisch vergeben, sobald jemand
                             eine Abmeldung erstellt, und wieder entfernt, sobald er sich anmeldet.</small>
                         <div class="chip-select" id="abmeldesystem-role"><span class="chip-empty">Lade
                                 Rollen...</span></div>
@@ -1324,7 +1324,7 @@
                     (eigener Kanal & eigene Nachricht je Befehl), sowie wer diese Befehle nutzen darf.</p>
 
                 <div class="panel-card">
-                    <h3 style="font-size:1rem; font-weight:700; margin-bottom:4px;">🟢 RP Start</h3>
+                    <h3 class="extracted-inline-dashboard-17">🟢 RP Start</h3>
                     <div class="form-group"><label>Nachrichtentyp</label><select id="rp-start-mode"
                             onchange="updateEmbedPreview('rp-start')">
                             <option value="embed">Embed</option>
@@ -1332,7 +1332,7 @@
                         </select></div>
                     <div class="form-group"><label for="rp-start-channel">Kanal</label><select
                             id="rp-start-channel"></select>
-                        <small style="display:block; margin-top:6px;">Hier postet der Bot die Nachricht bei
+                        <small class="extracted-inline-dashboard-16">Hier postet der Bot die Nachricht bei
                             <code>/rp_start</code>.</small>
                     </div>
                     <div class="form-group"><label for="rp-start-title">Embed-Titel</label><input type="text"
@@ -1361,11 +1361,11 @@
                                 value="#5865f2" oninput="syncColorHex('rp-start')"></div>
                     </div>
                     <div
-                        style="margin-top:0.5rem; background:var(--bg-surface); border-radius:10px; padding:14px; border:1px solid var(--border-subtle);">
+                        class="extracted-inline-dashboard-27">
                         <label
-                            style="font-size:0.75rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:6px;">📺
+                            class="extracted-inline-dashboard-12">📺
                             Live-Vorschau</label>
-                        <div class="embed-preview" id="rp-start-preview" style="border-left-color:#5865f2;">
+                        <div class="embed-preview extracted-inline-dashboard-28" id="rp-start-preview">
                             <div class="embed-preview-title" id="rp-start-preview-title">🎭 Roleplay gestartet</div>
                             <div class="embed-preview-desc" id="rp-start-preview-desc">Das Roleplay wurde von {user}
                                 gestartet!</div>
@@ -1374,8 +1374,8 @@
                     </div>
                 </div>
 
-                <div class="panel-card" style="margin-top:1rem;">
-                    <h3 style="font-size:1rem; font-weight:700; margin-bottom:4px;">🔴 RP Stop</h3>
+                <div class="panel-card extracted-inline-dashboard-29">
+                    <h3 class="extracted-inline-dashboard-17">🔴 RP Stop</h3>
                     <div class="form-group"><label>Nachrichtentyp</label><select id="rp-stop-mode"
                             onchange="updateEmbedPreview('rp-stop')">
                             <option value="embed">Embed</option>
@@ -1383,7 +1383,7 @@
                         </select></div>
                     <div class="form-group"><label for="rp-stop-channel">Kanal</label><select
                             id="rp-stop-channel"></select>
-                        <small style="display:block; margin-top:6px;">Hier postet der Bot die Nachricht bei
+                        <small class="extracted-inline-dashboard-16">Hier postet der Bot die Nachricht bei
                             <code>/rp_stop</code>.</small>
                     </div>
                     <div class="form-group"><label for="rp-stop-title">Embed-Titel</label><input type="text"
@@ -1412,11 +1412,11 @@
                                 value="#ed4245" oninput="syncColorHex('rp-stop')"></div>
                     </div>
                     <div
-                        style="margin-top:0.5rem; background:var(--bg-surface); border-radius:10px; padding:14px; border:1px solid var(--border-subtle);">
+                        class="extracted-inline-dashboard-27">
                         <label
-                            style="font-size:0.75rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:6px;">📺
+                            class="extracted-inline-dashboard-12">📺
                             Live-Vorschau</label>
-                        <div class="embed-preview" id="rp-stop-preview" style="border-left-color:#ed4245;">
+                        <div class="embed-preview extracted-inline-dashboard-30" id="rp-stop-preview">
                             <div class="embed-preview-title" id="rp-stop-preview-title">🔴 Roleplay beendet</div>
                             <div class="embed-preview-desc" id="rp-stop-preview-desc">Das Roleplay wurde von {user}
                                 beendet!</div>
@@ -1425,10 +1425,10 @@
                     </div>
                 </div>
 
-                <div class="panel-card" style="margin-top:1rem;">
+                <div class="panel-card extracted-inline-dashboard-29">
                     <div class="form-group">
                         <label>Wer darf /rp_start und /rp_stop nutzen?</label>
-                        <small style="display:block; margin-bottom:6px;">Nur Mitglieder mit einer dieser Rollen können
+                        <small class="extracted-inline-dashboard-19">Nur Mitglieder mit einer dieser Rollen können
                             die Befehle ausführen.</small>
                         <div id="rp-allowed-roles" class="chip-select"><span class="chip-empty">Lade Rollen...</span>
                         </div>
@@ -1450,12 +1450,12 @@
                         <label for="bot-channel">Kanal auswählen</label>
                         <select id="bot-channel"></select>
                     </div>
-                    <button class="btn btn-secondary" onclick="loadBotMessages()" style="margin-top:6px;">📥 Nachrichten
+                    <button class="btn btn-secondary extracted-inline-dashboard-31" onclick="loadBotMessages()">📥 Nachrichten
                         laden</button>
                 </div>
 
                 <div class="panel-card">
-                    <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">✏️ Nachricht verfassen</h3>
+                    <h3 class="extracted-inline-dashboard-32">✏️ Nachricht verfassen</h3>
                     <div class="form-group">
                         <label>Text (optional)</label>
                         <textarea id="bot-content" rows="2" placeholder="Nachrichtentext..."></textarea>
@@ -1479,7 +1479,7 @@
                 </div>
 
                 <div class="panel-card">
-                    <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">📋 Bot-Nachrichten in diesem Kanal
+                    <h3 class="extracted-inline-dashboard-32">📋 Bot-Nachrichten in diesem Kanal
                     </h3>
                     <div id="bot-messages-list"><span class="chip-empty">Wähle einen Kanal und lade die
                             Nachrichten.</span></div>
@@ -1550,7 +1550,7 @@
                 <button type="button" class="add-option-btn" onclick="addApplicationForm()">+ Bewerbung
                     hinzufügen</button>
 
-                <div class="form-action" style="margin-top:16px;">
+                <div class="form-action extracted-inline-dashboard-33">
                     <span id="applications-save-status" class="hidden status-success"></span>
                     <button class="btn btn-primary" onclick="handleSaveClick('applications')">Alle Bewerbungen
                         speichern</button>
@@ -1598,12 +1598,12 @@
                                 accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac,.flac"
                                 onchange="handleVoiceSupportSoundUpload(this)">
                         </div>
-                        <div id="voice_support-joinsound-info" class="hidden" style="margin-top:8px;">
+                        <div id="voice_support-joinsound-info" class="hidden extracted-inline-dashboard-34">
                             <span id="voice_support-joinsound-filename"
-                                style="font-size:0.85rem; color:var(--text-muted);"></span>
+                                class="extracted-inline-dashboard-35"></span>
                             <audio id="voice_support-joinsound-preview" controls
-                                style="display:block; width:100%; margin-top:6px;"></audio>
-                            <button class="btn btn-secondary" style="margin-top:6px;"
+                                class="extracted-inline-dashboard-36"></audio>
+                            <button class="btn btn-secondary extracted-inline-dashboard-31"
                                 onclick="clearVoiceSupportSound()">Entfernen</button>
                         </div>
                         <small>Erlaubt sind gängige Audioformate (MP3, WAV, OGG), max. 4MB.</small>
@@ -1623,9 +1623,9 @@
                         <small>Wähle eine Rolle, die bei neuen Support-Anfragen gepingt wird.</small>
                     </div>
 
-                    <hr style="border-color:var(--border-subtle); margin:1rem 0;">
+                    <hr class="extracted-inline-dashboard-37">
 
-                    <h3 style="font-size:0.9rem; font-weight:700; margin-bottom:0.5rem;">📝 Embed anpassen</h3>
+                    <h3 class="extracted-inline-dashboard-38">📝 Embed anpassen</h3>
                     <div class="form-group">
                         <label for="voice_support-embed-title">Titel</label>
                         <input type="text" id="voice_support-embed-title" placeholder="🆕 Support-Anfrage"
@@ -1650,8 +1650,8 @@
                     <div class="form-group">
                         <label>Bild (optional)</label>
                         <div class="image-upload">
-                            <img id="voice_support-embed-image-preview" class="image-preview" src="" alt=""
-                                style="display:none;">
+                            <img id="voice_support-embed-image-preview" class="image-preview extracted-inline-dashboard-39" src="" alt=""
+                               >
                             <div class="upload-btn-wrap">
                                 <label class="btn btn-secondary" for="voice_support-embed-image-input">📤
                                     Hochladen</label>
@@ -1662,18 +1662,18 @@
                         </div>
                     </div>
                     <div
-                        style="background:var(--bg-surface); border-radius:10px; padding:14px; border:1px solid var(--border-subtle); margin-top:0.5rem;">
+                        class="extracted-inline-dashboard-40">
                         <label
-                            style="font-size:0.75rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:6px;">📺
+                            class="extracted-inline-dashboard-12">📺
                             Live-Vorschau</label>
-                        <div class="embed-preview" id="voice_support-embed-preview" style="border-left-color:#5865f2;">
+                        <div class="embed-preview extracted-inline-dashboard-28" id="voice_support-embed-preview">
                             <div class="embed-preview-title">🆕 Support-Anfrage</div>
                             <div class="embed-preview-desc">{user} wartet im Support-Warteraum auf Hilfe.</div>
                             <img class="embed-preview-image hidden" id="voice_support-embed-preview-image" src="">
                         </div>
                     </div>
 
-                    <hr style="border-color:var(--border-subtle); margin:1rem 0;">
+                    <hr class="extracted-inline-dashboard-37">
 
                     <div class="form-group">
                         <label for="voice_support-dutyembed">Kanal für Dienststatus-Embed</label>
