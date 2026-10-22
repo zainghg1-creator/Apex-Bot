@@ -21,6 +21,58 @@
   ],
   "routes": [
     {
+      "src": "/.env.example",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/.gitignore",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/README.md",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/main.py",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/package.json",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/requirements.txt",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/security-middleware.js",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/server-secure.js",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/server.js",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/vercel.json",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/.github/(.*)",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/docs/(.*)",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/scripts/(.*)",
+      "dest": "/server-secure.js"
+    },
+    {
       "src": "/dashboard",
       "dest": "/server-secure.js"
     },
