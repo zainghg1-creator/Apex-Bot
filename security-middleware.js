@@ -133,7 +133,9 @@ function securityMiddleware(req, res, next) {
 }
 
 function validateEnvironment() {
-  if (process.env.NODE_ENV === 'production') {
+  // Fail closed when NODE_ENV is missing: the server defaults to production.
+  const nodeEnv = process.env.NODE_ENV || 'production';
+  if (nodeEnv === 'production') {
     const secret = process.env.SESSION_SECRET;
     if (!secret || secret === 'default-secret' || secret.length < 32) {
       throw new Error('SECURITY: SESSION_SECRET muss in Production gesetzt sein und mindestens 32 Zeichen haben.');
