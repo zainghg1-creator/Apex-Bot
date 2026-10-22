@@ -21,6 +21,10 @@
   ],
   "routes": [
     {
+      "src": "/dashboard",
+      "dest": "/server-secure.js"
+    },
+    {
       "src": "/dashboard.html",
       "dest": "/server-secure.js"
     },
