@@ -1,5 +1,15 @@
 # Dateiübersicht und Wartung
 
+## Neue Ordnerstruktur
+- `bot/cogs/`, `bot/dienste/`, `bot/datenbank/`: vorbereitete Bereiche für die schrittweise Aufteilung des Python-Bots.
+- `frontend/css/`, `frontend/js/`: Zielordner für Web-Assets; bestehende Dateien bleiben vorerst an ihren bisherigen Pfaden, bis Hosting- und Asset-Referenzen gemeinsam umgestellt werden.
+- `backend/middleware/`, `backend/oauth/`: vorbereitete Bereiche für die spätere Extraktion aus `server.js`.
+- `konfiguration/`: Dokumentation zur sicheren Konfiguration; keine Geheimnisse speichern.
+- `tests/bot/`: Ziel für Bot-Tests.
+- `docs/architektur/`: Architektur- und Migrationsdokumentation.
+
+Die neuen Ordner sind absichtlich mit internen Dateien geschützt. Der eigentliche Umzug erfolgt schrittweise, damit keine Imports, Hosting-Routen oder Frontend-Assets kaputtgehen.
+
 ## Weboberfläche
 - `index.html`, `startseite.css`, `startseite.js`: öffentliche Startseite.
 - `dashboard.html`, `dashboard.css`, `dashboard-inline.js`, `dashboard.js`: Server-Dashboard.
