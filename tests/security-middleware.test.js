@@ -175,3 +175,56 @@ test('allows same-origin writes from a Discord administrator', async () => {
     global.fetch = originalFetch;
   }
 });
+
+
+test('rejects state-changing API requests without an Origin header', async () => {
+  const req = createRequest({
+    path: '/api/guild/123456789012345680/config',
+    method: 'POST',
+    ip: '127.0.0.6',
+    session: { user: { id: 'test-admin-3' }, accessToken: 'test-token' }
+  });
+  const res = createResponse();
+  let nextCalled = false;
+
+  await securityMiddleware(req, res, () => {
+    nextCalled = true;
+  });
+
+  assert.equal(res.statusCode, 403);
+  assert.deepEqual(res.body, { error: 'origin_not_allowed' });
+  assert.equal(nextCalled, false);
+});
+
+test('rejects users without Discord administrator permissions', async () => {
+  const originalFetch = global.fetch;
+  global.fetch = async () => ({
+    ok: true,
+    status: 200,
+    json: async () => [{
+      id: '123456789012345681',
+      owner: false,
+      permissions: '2048'
+    }]
+  });
+
+  try {
+    const req = createRequest({
+      path: '/api/guild/123456789012345681/config',
+      ip: '127.0.0.7',
+      session: { user: { id: 'test-member-1' }, accessToken: 'test-token' }
+    });
+    const res = createResponse();
+    let nextCalled = false;
+
+    await securityMiddleware(req, res, () => {
+      nextCalled = true;
+    });
+
+    assert.equal(res.statusCode, 403);
+    assert.deepEqual(res.body, { error: 'not_guild_admin' });
+    assert.equal(nextCalled, false);
+  } finally {
+    global.fetch = originalFetch;
+  }
+});
