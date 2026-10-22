@@ -2,7 +2,7 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { securityMiddleware, validateEnvironment } = require('../security-middleware');
+const { securityMiddleware, validateEnvironment } = require('../backend/middleware/security-middleware');
 
 function createRequest({
   path = '/',
