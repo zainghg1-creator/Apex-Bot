@@ -420,9 +420,9 @@
 
 
 /* Aus HTML extrahierte Inline-Styles */
-.extracted-inline-home-1 { color: var(--accent-purple) !important; }
-.extracted-inline-home-2 { font-weight: 800 !important; }
-.extracted-inline-home-3 { display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 12px !important; }
-.extracted-inline-home-4 { width: 32px !important; height: 32px !important; }
-.extracted-inline-home-5 { font-weight: 700 !important; font-size: 1rem !important; }
-.extracted-inline-home-6 { color: var(--text-dim) !important; font-size: 0.85rem !important; line-height: 1.5 !important; max-width: 220px !important; }
+.extracted-inline-home-1.extracted-inline-home-1 { color: var(--accent-purple); }
+.extracted-inline-home-2.extracted-inline-home-2 { font-weight: 800; }
+.extracted-inline-home-3.extracted-inline-home-3 { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.extracted-inline-home-4.extracted-inline-home-4 { width: 32px; height: 32px; }
+.extracted-inline-home-5.extracted-inline-home-5 { font-weight: 700; font-size: 1rem; }
+.extracted-inline-home-6.extracted-inline-home-6 { color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; max-width: 220px; }
