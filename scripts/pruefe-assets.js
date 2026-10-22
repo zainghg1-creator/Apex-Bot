@@ -70,7 +70,7 @@ if (dashboardRouteIndex === -1 || staticMiddlewareIndex === -1 || dashboardRoute
 if (privateFilesGuardIndex === -1 || privateFilesGuardIndex > staticMiddlewareIndex) {
   missing.push('server.js -> Schutz interner Dateien muss vor express.static registriert sein');
 }
-for (const privatePath of ['/main.py', '/server.js', '/server-secure.js', '/security-middleware.js', '/package.json', '/requirements.txt', '/vercel.json']) {
+for (const privatePath of ['/main.py', '/server.js', '/server-secure.js', '/security-middleware.js', '/session-token.js', '/oauth-state.js', '/package.json', '/requirements.txt', '/vercel.json']) {
   if (!serverSource.includes("'" + privatePath + "'")) {
     missing.push('server.js -> interne Datei nicht gesperrt: ' + privatePath);
   }
@@ -95,7 +95,7 @@ if (vercelConfig) {
   const privateRoutePatterns = [
     '/.env.example', '/.gitignore', '/README.md', '/main.py',
     '/package.json', '/requirements.txt', '/security-middleware.js',
-    '/server-secure.js', '/server.js', '/vercel.json',
+    '/session-token.js', '/oauth-state.js', '/server-secure.js', '/server.js', '/vercel.json',
     '/.github/(.*)', '/docs/(.*)', '/scripts/(.*)'
   ];
   for (const routePath of privateRoutePatterns) {
