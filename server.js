@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cookieSession = require('cookie-session');
+const { securityMiddleware } = require('./security-middleware');
 const path = require('path');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
@@ -48,6 +49,9 @@ app.use(cookieSession({
   sameSite: 'lax',
   httpOnly: true
 }));
+
+// Apply API authorization and security headers after the session is available.
+app.use(securityMiddleware);
 
 
 
