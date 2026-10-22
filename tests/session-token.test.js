@@ -2,7 +2,7 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { encryptAccessToken, decryptAccessToken } = require('../session-token');
+const { encryptAccessToken, decryptAccessToken } = require('../backend/oauth/session-token');
 
 const SECRET = 'test-session-secret-that-is-long-enough-123456';
 
