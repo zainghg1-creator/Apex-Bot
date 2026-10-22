@@ -20,7 +20,7 @@ Für einen normalen Start: `npm start`.
 3. Die Bot- und Datenbankwerte in `.env` setzen.
 4. Den Bot mit `python main.py` starten.
 
-**Sicherheit:** `.env.example` enthält ausschließlich Platzhalter. Trage echte Tokens, Datenbank-URLs und Sitzungsschlüssel nur in deine lokale `.env` oder die Umgebungsvariablen des Hosters ein. Committe niemals echte Geheimnisse. Für `NODE_ENV=production` muss `SESSION_SECRET` gesetzt sein und mindestens 32 Zeichen lang sein. Das Dashboard wird lokal und auf Vercel über den Server-Handler ausgeliefert; interne Quell-, Konfigurations- und Dokumentationsdateien werden nicht als öffentliche statische Dateien ausgeliefert. Schreibende API-Anfragen benötigen außerdem eine passende Origin-Angabe.
+**Sicherheit:** `.env.example` enthält ausschließlich Platzhalter. Trage echte Tokens, Datenbank-URLs und Sitzungsschlüssel nur in deine lokale `.env` oder die Umgebungsvariablen des Hosters ein. Committe niemals echte Geheimnisse. Für `NODE_ENV=production` muss `SESSION_SECRET` gesetzt sein und mindestens 32 Zeichen lang sein. Das Dashboard wird lokal und auf Vercel über den Server-Handler ausgeliefert; interne Quell-, Konfigurations- und Dokumentationsdateien werden nicht als öffentliche statische Dateien ausgeliefert. Schreibende API-Anfragen benötigen außerdem eine passende Origin-Angabe. Discord-OAuth-Tokens werden verschlüsselt in der Cookie-Session abgelegt; der OAuth-Callback prüft einen zufälligen State-Wert gegen Login-CSRF.
 
 ## Automatische Prüfungen
 
@@ -40,6 +40,8 @@ Die Prüfungen prüfen Syntax, nicht die Live-Funktion mit Discord, MongoDB oder
 | `server-secure.js` | Sicherer Einstiegspunkt für den Webserver |
 | `server.js` | Express-Server, Anmeldung, API und Datenbankzugriff |
 | `security-middleware.js` | Sicherheitsprüfungen für Dashboard-API-Aufrufe |
+| `session-token.js` | Verschlüsselt OAuth-Tokens für die Cookie-Session |
+| `oauth-state.js` | Erzeugt und prüft den OAuth-State-Wert |
 | `dashboard.html` | HTML-Grundgerüst des Dashboards |
 | `dashboard.css` | Styles des Dashboards |
 | `dashboard-inline.js` | Sternenhintergrund und Fallback-Funktionen des Dashboards |
