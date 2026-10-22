@@ -32,6 +32,17 @@ Für einen normalen Start: `npm start`.
 
 Die Prüfungen prüfen Syntax, nicht die Live-Funktion mit Discord, MongoDB oder OAuth. Dafür sind zusätzliche Tests in der jeweiligen Hosting-Umgebung nötig.
 
+## Projektstruktur
+
+- `backend/middleware/`: Request- und Sicherheits-Middleware.
+- `backend/oauth/`: OAuth-State und Verschlüsselung von Sitzungstokens.
+- `bot/`: vorgesehene fachliche Aufteilung des Python-Discord-Bots.
+- `frontend/`: vorgesehene Trennung von Stylesheets und Browser-JavaScript.
+- `tests/`: Regressionstests für Web-Sicherheit und später Bot-Funktionen.
+- `docs/`: Projekt- und Architektur-Dokumentation.
+
+Die Webserver-Imports nutzen bereits die neuen Backend-Pfade. Die alten Dateien im Stamm bleiben vorerst als kompatible Einstiegspunkte erhalten.
+
 ## Dateiübersicht
 
 | Datei | Aufgabe |
@@ -39,9 +50,9 @@ Die Prüfungen prüfen Syntax, nicht die Live-Funktion mit Discord, MongoDB oder
 | `main.py` | Discord-Bot: Ereignisse, Befehle, Interaktionen und Hintergrundaufgaben |
 | `server-secure.js` | Sicherer Einstiegspunkt für den Webserver |
 | `server.js` | Express-Server, Anmeldung, API und Datenbankzugriff |
-| `security-middleware.js` | Sicherheitsprüfungen für Dashboard-API-Aufrufe |
-| `session-token.js` | Verschlüsselt OAuth-Tokens für die Cookie-Session |
-| `oauth-state.js` | Erzeugt und prüft den OAuth-State-Wert |
+| `backend/middleware/security-middleware.js` | Sicherheitsprüfungen für Dashboard-API-Aufrufe |
+| `backend/oauth/session-token.js` | Verschlüsselt OAuth-Tokens für die Cookie-Session |
+| `backend/oauth/oauth-state.js` | Erzeugt und prüft den OAuth-State-Wert |
 | `dashboard.html` | HTML-Grundgerüst des Dashboards |
 | `dashboard.css` | Styles des Dashboards |
 | `dashboard-inline.js` | Sternenhintergrund und Fallback-Funktionen des Dashboards |
