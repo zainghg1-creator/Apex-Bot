@@ -38,7 +38,6 @@ const ALLOWED_MODULES = ['welcome', 'tickets', 'teamliste', 'automod', 'teamupda
 const app = express();
 app.set('trust proxy', 1);
 
-app.use(express.static(__dirname));
 app.use(express.json({ limit: '20mb' }));
 
 app.use(cookieSession({
@@ -191,6 +190,9 @@ app.get('/dashboard.html', (req, res) => {
   if (!req.session?.user) return res.redirect('/');
   res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
+
+// Guarded dashboard route must be registered before static file serving.
+app.use(express.static(__dirname));
 
 
 
