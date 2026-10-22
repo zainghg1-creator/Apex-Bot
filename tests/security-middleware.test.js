@@ -179,7 +179,7 @@ test('allows same-origin writes from a Discord administrator', async () => {
 
 test('rejects state-changing API requests without an Origin header', async () => {
   const req = createRequest({
-    path: '/api/guild/123456789012345680/config',
+    path: '/api/test-action',
     method: 'POST',
     ip: '127.0.0.6',
     session: { user: { id: 'test-admin-3' }, accessToken: 'test-token' }
