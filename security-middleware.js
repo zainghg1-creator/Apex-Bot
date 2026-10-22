@@ -78,7 +78,7 @@ async function isGuildAdmin(req, guildId) {
 
 function sameOrigin(req) {
   const origin = req.get('origin');
-  if (!origin) return true;
+  if (!origin) return false;
   try {
     const expected = `${req.protocol}://${req.get('host')}`;
     return new URL(origin).origin === expected;
