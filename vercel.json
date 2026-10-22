@@ -81,6 +81,22 @@
       "dest": "/server-secure.js"
     },
     {
+      "src": "/tests/(.*)",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/konfiguration/(.*)",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/bot/(.*)",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/backend/(.*)",
+      "dest": "/server-secure.js"
+    },
+    {
       "src": "/dashboard",
       "dest": "/server-secure.js"
     },
