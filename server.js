@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cookieSession = require('cookie-session');
 const { securityMiddleware, validateEnvironment } = require('./security-middleware');
+const { encryptAccessToken, decryptAccessToken } = require('./session-token');
 const path = require('path');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
@@ -51,6 +52,12 @@ app.use(cookieSession({
   sameSite: 'lax',
   httpOnly: true
 }));
+
+// cookie-session is signed, not encrypted: decrypt OAuth tokens only in server memory.
+app.use((req, res, next) => {
+  req.accessToken = decryptAccessToken(req.session?.encryptedAccessToken);
+  next();
+});
 
 // Apply API authorization and security headers after the session is available.
 app.use(securityMiddleware);
@@ -269,7 +276,7 @@ app.get('/auth/discord/callback', async (req, res) => {
     });
     if (!userRes.ok) throw new Error('User fetch failed');
     const user = await userRes.json();
-    req.session.accessToken = tokenData.access_token;
+    req.session.encryptedAccessToken = encryptAccessToken(tokenData.access_token);
     req.session.user = {
       id: user.id,
       username: user.username,
@@ -292,14 +299,14 @@ app.get('/auth/logout', (req, res) => {
 
 
 function requireAuth(req, res, next) {
-  if (!req.session?.accessToken) {
+  if (!req.accessToken) {
     return res.status(401).json({ error: 'not_authenticated' });
   }
   next();
 }
 
 async function requireGuildAdmin(req, res, next) {
-  if (!req.session?.accessToken) {
+  if (!req.accessToken) {
     return res.status(401).json({ error: 'not_authenticated' });
   }
   const guildId = req.params.guildId;
@@ -307,7 +314,7 @@ async function requireGuildAdmin(req, res, next) {
 
   try {
     const guildsRes = await fetch(`${DISCORD_API}/users/@me/guilds`, {
-      headers: { Authorization: `Bearer ${req.session.accessToken}` }
+      headers: { Authorization: `Bearer ${req.accessToken}` }
     });
     if (!guildsRes.ok) {
       if (guildsRes.status === 401) {
@@ -414,7 +421,7 @@ async function hasEffectivePremiumAccess(userId, guildId) {
 app.get('/api/guilds', requireAuth, async (req, res) => {
   try {
     const guildsRes = await fetch(`${DISCORD_API}/users/@me/guilds`, {
-      headers: { Authorization: `Bearer ${req.session.accessToken}` }
+      headers: { Authorization: `Bearer ${req.accessToken}` }
     });
     if (guildsRes.status === 401) {
       req.session = null;
