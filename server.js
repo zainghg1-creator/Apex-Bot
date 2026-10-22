@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cookieSession = require('cookie-session');
-const { securityMiddleware } = require('./security-middleware');
+const { securityMiddleware, validateEnvironment } = require('./security-middleware');
 const path = require('path');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
@@ -20,6 +20,8 @@ const {
   PORT = process.env.PORT || 3000,
   NODE_ENV = 'production'
 } = process.env;
+
+validateEnvironment();
 
 console.log('🔍 Server startet...');
 console.log('🔑 BOT_TOKEN vorhanden?', BOT_TOKEN ? '✅ Ja' : '❌ Nein');
@@ -43,7 +45,7 @@ app.use(express.json({ limit: '20mb' }));
 
 app.use(cookieSession({
   name: 'apex_session',
-  keys: [SESSION_SECRET || 'default-secret'],
+  keys: [SESSION_SECRET || 'development-only-secret-change-me'],
   maxAge: 24 * 60 * 60 * 1000,
   secure: NODE_ENV === 'production',
   sameSite: 'lax',
