@@ -186,7 +186,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.get('/dashboard.html', (req, res) => {
+app.get(['/dashboard.html', '/dashboard'], (req, res) => {
   if (!req.session?.user) return res.redirect('/');
   res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
