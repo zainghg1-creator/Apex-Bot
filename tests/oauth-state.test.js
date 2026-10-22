@@ -2,7 +2,7 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { createOAuthState, isValidOAuthState } = require('../oauth-state');
+const { createOAuthState, isValidOAuthState } = require('../backend/oauth/oauth-state');
 
 test('creates unpredictable OAuth state values with the expected length', () => {
   const first = createOAuthState();
