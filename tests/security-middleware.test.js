@@ -9,6 +9,7 @@ function createRequest({
   method = 'GET',
   ip = '127.0.0.1',
   session = null,
+  accessToken = session?.accessToken,
   origin = undefined,
   host = 'apex.example',
   protocol = 'https'
@@ -18,6 +19,7 @@ function createRequest({
     method,
     ip,
     session,
+    accessToken,
     protocol,
     get(name) {
       if (name.toLowerCase() === 'origin') return origin;
