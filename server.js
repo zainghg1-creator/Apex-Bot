@@ -4,6 +4,7 @@ const express = require('express');
 const cookieSession = require('cookie-session');
 const { securityMiddleware, validateEnvironment } = require('./security-middleware');
 const { encryptAccessToken, decryptAccessToken } = require('./session-token');
+const { createOAuthState, isValidOAuthState } = require('./oauth-state');
 const path = require('path');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
@@ -244,19 +245,30 @@ app.use(express.static(__dirname, { index: false, dotfiles: 'deny' }));
 
 
 app.get('/auth/discord/login', (req, res) => {
+  const state = createOAuthState();
+  req.session.oauthState = state;
+
   const params = new URLSearchParams({
     client_id: CLIENT_ID,
     redirect_uri: REDIRECT_URI,
     response_type: 'code',
     scope: 'identify guilds',
-    prompt: 'consent'
+    prompt: 'consent',
+    state
   });
   res.redirect(`https://discord.com/api/oauth2/authorize?${params}`);
 });
 
 app.get('/auth/discord/callback', async (req, res) => {
-  const { code } = req.query;
+  const { code, state } = req.query;
   if (!code) return res.redirect('/?error=missing_code');
+
+  const expectedState = req.session?.oauthState;
+  if (req.session) delete req.session.oauthState;
+  if (!isValidOAuthState(state, expectedState)) {
+    return res.redirect('/?error=invalid_state');
+  }
+
   try {
     const tokenRes = await fetch(`${DISCORD_API}/oauth2/token`, {
       method: 'POST',
