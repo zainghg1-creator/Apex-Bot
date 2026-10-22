@@ -20,12 +20,12 @@ Für einen normalen Start: `npm start`.
 3. Die Bot- und Datenbankwerte in `.env` setzen.
 4. Den Bot mit `python main.py` starten.
 
-**Sicherheit:** `.env.example` enthält ausschließlich Platzhalter. Trage echte Tokens, Datenbank-URLs und Sitzungsschlüssel nur in deine lokale `.env` oder die Umgebungsvariablen des Hosters ein. Committe niemals echte Geheimnisse. Für `NODE_ENV=production` muss `SESSION_SECRET` gesetzt sein und mindestens 32 Zeichen lang sein.
+**Sicherheit:** `.env.example` enthält ausschließlich Platzhalter. Trage echte Tokens, Datenbank-URLs und Sitzungsschlüssel nur in deine lokale `.env` oder die Umgebungsvariablen des Hosters ein. Committe niemals echte Geheimnisse. Für `NODE_ENV=production` muss `SESSION_SECRET` gesetzt sein und mindestens 32 Zeichen lang sein. Das Dashboard wird lokal und auf Vercel über den Server-Handler ausgeliefert; interne Quell-, Konfigurations- und Dokumentationsdateien werden nicht als öffentliche statische Dateien ausgeliefert.
 
 ## Automatische Prüfungen
 
 - `npm run check` prüft die Syntax der JavaScript-Dateien und kontrolliert die HTML-Assets.
-- Der Asset-Check stellt außerdem sicher, dass `index.html` und `dashboard.html` keine Inline-Styles oder Inline-Scripts enthalten.
+- Der Asset-Check stellt außerdem sicher, dass `index.html` und `dashboard.html` keine Inline-Styles oder Inline-Scripts enthalten, alle extrahierten CSS-Klassen Regeln haben und die Dashboard- sowie interne Dateirouten geschützt bleiben.
 - `python -m py_compile main.py` prüft die Python-Syntax.
 - GitHub Actions führt beide Prüfungen bei Pushes auf den relevanten Branches und bei Pull Requests aus.
 
