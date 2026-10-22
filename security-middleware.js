@@ -44,7 +44,7 @@ function checkRateLimit(req, res) {
 
 async function isGuildAdmin(req, guildId) {
   const userId = req.session?.user?.id;
-  const accessToken = req.session?.accessToken;
+  const accessToken = req.accessToken;
   if (!userId || !accessToken || !guildId) return false;
 
   const cacheKey = `${userId}:${guildId}`;
@@ -103,7 +103,7 @@ function securityMiddleware(req, res, next) {
   // Every guild-scoped API request, including GET, must belong to a real
   // authenticated Discord Administrator of that exact guild.
   if (guildScoped) {
-    if (!req.session?.accessToken || !req.session?.user?.id) {
+    if (!req.accessToken || !req.session?.user?.id) {
       return res.status(401).json({ error: 'not_authenticated' });
     }
     if (!guildId) return res.status(400).json({ error: 'guild_id_required' });
@@ -122,7 +122,7 @@ function securityMiddleware(req, res, next) {
   // Any other state-changing API endpoint still requires a valid session.
   const mutating = ['POST', 'PUT', 'PATCH', 'DELETE'].includes(req.method);
   if (mutating) {
-    if (!req.session?.accessToken || !req.session?.user?.id) {
+    if (!req.accessToken || !req.session?.user?.id) {
       return res.status(401).json({ error: 'not_authenticated' });
     }
     if (!sameOrigin(req)) return res.status(403).json({ error: 'origin_not_allowed' });
