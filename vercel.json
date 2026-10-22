@@ -49,6 +49,14 @@
       "dest": "/server-secure.js"
     },
     {
+      "src": "/session-token.js",
+      "dest": "/server-secure.js"
+    },
+    {
+      "src": "/oauth-state.js",
+      "dest": "/server-secure.js"
+    },
+    {
       "src": "/server-secure.js",
       "dest": "/server-secure.js"
     },
