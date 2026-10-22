@@ -206,7 +206,13 @@ const PRIVATE_STATIC_PATHS = new Set([
 ]);
 
 app.use((req, res, next) => {
-  const requestPath = req.path;
+  let requestPath;
+  try {
+    requestPath = decodeURIComponent(req.path);
+  } catch {
+    return res.sendStatus(400);
+  }
+
   if (
     PRIVATE_STATIC_PATHS.has(requestPath) ||
     requestPath.startsWith('/.github/') ||
