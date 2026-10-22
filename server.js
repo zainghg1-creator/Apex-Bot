@@ -2,9 +2,9 @@ require('dotenv').config();
 
 const express = require('express');
 const cookieSession = require('cookie-session');
-const { securityMiddleware, validateEnvironment } = require('./security-middleware');
-const { encryptAccessToken, decryptAccessToken } = require('./session-token');
-const { createOAuthState, isValidOAuthState } = require('./oauth-state');
+const { securityMiddleware, validateEnvironment } = require('./backend/middleware/security-middleware');
+const { encryptAccessToken, decryptAccessToken } = require('./backend/oauth/session-token');
+const { createOAuthState, isValidOAuthState } = require('./backend/oauth/oauth-state');
 const path = require('path');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
