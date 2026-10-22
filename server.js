@@ -214,6 +214,8 @@ const PRIVATE_STATIC_PATHS = new Set([
   '/package.json',
   '/requirements.txt',
   '/security-middleware.js',
+  '/session-token.js',
+  '/oauth-state.js',
   '/server-secure.js',
   '/server.js',
   '/vercel.json'
