@@ -2,7 +2,7 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { securityMiddleware } = require('../security-middleware');
+const { securityMiddleware, validateEnvironment } = require('../security-middleware');
 
 function createRequest({
   path = '/',
@@ -226,5 +226,41 @@ test('rejects users without Discord administrator permissions', async () => {
     assert.equal(nextCalled, false);
   } finally {
     global.fetch = originalFetch;
+  }
+});
+
+
+test('requires a strong session secret when NODE_ENV is missing', () => {
+  const previousNodeEnv = process.env.NODE_ENV;
+  const previousSecret = process.env.SESSION_SECRET;
+  delete process.env.NODE_ENV;
+  delete process.env.SESSION_SECRET;
+
+  try {
+    assert.throws(
+      () => validateEnvironment(),
+      /SESSION_SECRET muss in Production gesetzt sein/
+    );
+  } finally {
+    if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
+    else process.env.NODE_ENV = previousNodeEnv;
+    if (previousSecret === undefined) delete process.env.SESSION_SECRET;
+    else process.env.SESSION_SECRET = previousSecret;
+  }
+});
+
+test('does not require a production secret in explicit development mode', () => {
+  const previousNodeEnv = process.env.NODE_ENV;
+  const previousSecret = process.env.SESSION_SECRET;
+  process.env.NODE_ENV = 'development';
+  delete process.env.SESSION_SECRET;
+
+  try {
+    assert.doesNotThrow(() => validateEnvironment());
+  } finally {
+    if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
+    else process.env.NODE_ENV = previousNodeEnv;
+    if (previousSecret === undefined) delete process.env.SESSION_SECRET;
+    else process.env.SESSION_SECRET = previousSecret;
   }
 });
