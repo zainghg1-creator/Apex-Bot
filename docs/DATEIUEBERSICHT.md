@@ -3,12 +3,15 @@
 ## Neue Ordnerstruktur
 - `bot/cogs/`, `bot/dienste/`, `bot/datenbank/`: vorbereitete Bereiche für die schrittweise Aufteilung des Python-Bots.
 - `frontend/css/`, `frontend/js/`: Zielordner für Web-Assets; bestehende Dateien bleiben vorerst an ihren bisherigen Pfaden, bis Hosting- und Asset-Referenzen gemeinsam umgestellt werden.
-- `backend/middleware/`, `backend/oauth/`: vorbereitete Bereiche für die spätere Extraktion aus `server.js`.
+- `backend/middleware/security-middleware.js`: echte Implementierung der Sicherheits-Middleware.
+- `backend/oauth/session-token.js`: Verschlüsselung und Entschlüsselung von OAuth-Tokens.
+- `backend/oauth/oauth-state.js`: sichere Erzeugung und Prüfung des OAuth-State-Werts.
+- Die gleichnamigen Dateien im Stamm sind kleine Kompatibilitäts-Einstiegspunkte für bestehende Importe.
 - `konfiguration/`: Dokumentation zur sicheren Konfiguration; keine Geheimnisse speichern.
 - `tests/bot/`: Ziel für Bot-Tests.
 - `docs/architektur/`: Architektur- und Migrationsdokumentation.
 
-Die neuen Ordner sind absichtlich mit internen Dateien geschützt. Der eigentliche Umzug erfolgt schrittweise, damit keine Imports, Hosting-Routen oder Frontend-Assets kaputtgehen.
+Die neuen Ordner sind absichtlich mit internen Dateien geschützt. Sicherheits-Middleware und OAuth-Helfer sind bereits in `backend/` umgezogen. Die übrigen Bereiche werden schrittweise befüllt, damit keine Imports, Hosting-Routen oder Frontend-Assets kaputtgehen.
 
 ## Weboberfläche
 - `index.html`, `startseite.css`, `startseite.js`: öffentliche Startseite.
@@ -18,9 +21,7 @@ Die neuen Ordner sind absichtlich mit internen Dateien geschützt. Der eigentlic
 ## Backend
 - `server-secure.js`: prüft die Umgebung und lädt den Server.
 - `server.js`: Express-Routen, Discord-Anmeldung und MongoDB; schützt Dashboard-Routen und sperrt interne Dateien vor dem Static-Server.
-- `security-middleware.js`: globale API-Sicherheitsprüfungen, Admin-Berechtigungen, Origin-Prüfung für alle schreibenden Requests und Rate-Limit.
-- `session-token.js`: verschlüsselt OAuth-Zugriffstoken mit AES-256-GCM, damit sie nicht lesbar im signierten Cookie liegen.
-- `oauth-state.js`: erzeugt und vergleicht OAuth-State-Werte zur Abwehr von Login-CSRF.
+- `security-middleware.js`, `session-token.js`, `oauth-state.js`: Kompatibilitätsdateien, die auf die Implementierungen unter `backend/` verweisen.
 - `tests/security-middleware.test.js`: Regressionstests für zentrale Sicherheitsfälle.
 - `main.py`: Discord-Bot in Python.
 
