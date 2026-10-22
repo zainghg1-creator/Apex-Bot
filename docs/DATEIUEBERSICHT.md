@@ -8,7 +8,8 @@
 ## Backend
 - `server-secure.js`: prüft die Umgebung und lädt den Server.
 - `server.js`: Express-Routen, Discord-Anmeldung und MongoDB; schützt Dashboard-Routen und sperrt interne Dateien vor dem Static-Server.
-- `security-middleware.js`: zusätzliche Sicherheitsprüfungen.
+- `security-middleware.js`: globale API-Sicherheitsprüfungen, Admin-Berechtigungen, Origin-Prüfung und Rate-Limit.
+- `tests/security-middleware.test.js`: Regressionstests für zentrale Sicherheitsfälle.
 - `main.py`: Discord-Bot in Python.
 
 ## Sicherheit
