@@ -34,7 +34,27 @@ for (const htmlFile of htmlFiles) {
   }
 }
 
+const backendModules = [
+  'backend/middleware/security-middleware.js',
+  'backend/oauth/session-token.js',
+  'backend/oauth/oauth-state.js'
+];
+for (const modulePath of backendModules) {
+  if (!fs.existsSync(path.join(root, modulePath))) {
+    missing.push('Backend-Modul fehlt: ' + modulePath);
+  }
+}
+
 const serverSource = fs.readFileSync(path.join(root, 'server.js'), 'utf8');
+for (const modulePath of [
+  "require('./backend/middleware/security-middleware')",
+  "require('./backend/oauth/session-token')",
+  "require('./backend/oauth/oauth-state')"
+]) {
+  if (!serverSource.includes(modulePath)) {
+    missing.push('server.js -> neues Backend-Modul wird nicht eingebunden: ' + modulePath);
+  }
+}
 const sessionMiddlewareIndex = serverSource.indexOf('app.use(cookieSession({');
 const tokenDecryptIndex = serverSource.indexOf('req.accessToken = decryptAccessToken(req.session?.encryptedAccessToken);');
 const securityMiddlewareIndex = serverSource.indexOf('app.use(securityMiddleware);');
