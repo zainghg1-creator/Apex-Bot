@@ -4,16 +4,20 @@ on:
   push:
     branches:
       - main
-      - refactor/aufraeumen-deutsche-struktur
   pull_request:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   syntax:
     name: JavaScript- und Python-Syntax
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
