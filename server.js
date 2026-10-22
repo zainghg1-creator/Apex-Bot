@@ -208,7 +208,7 @@ const PRIVATE_STATIC_PATHS = new Set([
 app.use((req, res, next) => {
   let requestPath;
   try {
-    requestPath = decodeURIComponent(req.path);
+    requestPath = path.posix.normalize(decodeURIComponent(req.path));
   } catch {
     return res.sendStatus(400);
   }
