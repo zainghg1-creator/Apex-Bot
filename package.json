@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server-secure.js",
     "dev": "nodemon server-secure.js",
-    "check": "node --check server.js && node --check server-secure.js && node --check security-middleware.js && node --check dashboard.js && node --check dashboard-inline.js && node --check startseite.js && node scripts/pruefe-assets.js && npm test",
+    "check": "node --check server.js && node --check server-secure.js && node --check security-middleware.js && node --check session-token.js && node --check oauth-state.js && node --check dashboard.js && node --check dashboard-inline.js && node --check startseite.js && node scripts/pruefe-assets.js && npm test",
     "test": "node --test tests/*.test.js"
   },
   "dependencies": {
