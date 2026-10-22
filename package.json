@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server-secure.js",
     "dev": "nodemon server-secure.js",
-    "check": "node --check server.js && node --check server-secure.js && node --check security-middleware.js && node --check dashboard.js && node --check dashboard-inline.js && node --check startseite.js"
+    "check": "node --check server.js && node --check server-secure.js && node --check security-middleware.js && node --check dashboard.js && node --check dashboard-inline.js && node --check startseite.js && node scripts/pruefe-assets.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
