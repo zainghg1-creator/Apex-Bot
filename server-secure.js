@@ -1,7 +1,5 @@
 // Security bootstrap for Vercel/Node.
-// server.js owns the Express app and its middleware/routes.
-// Keep this entrypoint deliberately small so /auth/discord/login cannot crash
-// because of middleware monkey-patching during module initialization.
+// server.js registers the security middleware after session setup and before routes.
 require('dotenv').config();
 const { validateEnvironment } = require('./security-middleware');
 

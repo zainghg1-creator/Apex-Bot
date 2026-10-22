@@ -5,7 +5,9 @@
   "main": "server-secure.js",
   "scripts": {
     "start": "node server-secure.js",
-    "dev": "nodemon server-secure.js"
+    "dev": "nodemon server-secure.js",
+    "check": "node --check server.js && node --check server-secure.js && node --check security-middleware.js && node --check session-token.js && node --check oauth-state.js && node --check backend/middleware/security-middleware.js && node --check backend/oauth/session-token.js && node --check backend/oauth/oauth-state.js && node --check dashboard.js && node --check dashboard-inline.js && node --check startseite.js && node scripts/pruefe-assets.js && npm test",
+    "test": "node --test tests/*.test.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",

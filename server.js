@@ -2,6 +2,9 @@ require('dotenv').config();
 
 const express = require('express');
 const cookieSession = require('cookie-session');
+const { securityMiddleware, validateEnvironment } = require('./backend/middleware/security-middleware');
+const { encryptAccessToken, decryptAccessToken } = require('./backend/oauth/session-token');
+const { createOAuthState, isValidOAuthState } = require('./backend/oauth/oauth-state');
 const path = require('path');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
@@ -19,6 +22,8 @@ const {
   PORT = process.env.PORT || 3000,
   NODE_ENV = 'production'
 } = process.env;
+
+validateEnvironment();
 
 console.log('🔍 Server startet...');
 console.log('🔑 BOT_TOKEN vorhanden?', BOT_TOKEN ? '✅ Ja' : '❌ Nein');
@@ -38,17 +43,25 @@ const ALLOWED_MODULES = ['welcome', 'tickets', 'teamliste', 'automod', 'teamupda
 const app = express();
 app.set('trust proxy', 1);
 
-app.use(express.static(__dirname));
 app.use(express.json({ limit: '20mb' }));
 
 app.use(cookieSession({
   name: 'apex_session',
-  keys: [SESSION_SECRET || 'default-secret'],
+  keys: [SESSION_SECRET || 'development-only-secret-change-me'],
   maxAge: 24 * 60 * 60 * 1000,
   secure: NODE_ENV === 'production',
   sameSite: 'lax',
   httpOnly: true
 }));
+
+// cookie-session is signed, not encrypted: decrypt OAuth tokens only in server memory.
+app.use((req, res, next) => {
+  req.accessToken = decryptAccessToken(req.session?.encryptedAccessToken);
+  next();
+});
+
+// Apply API authorization and security headers after the session is available.
+app.use(securityMiddleware);
 
 
 
@@ -187,28 +200,81 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.get('/dashboard.html', (req, res) => {
+app.get(['/dashboard.html', '/dashboard'], (req, res) => {
   if (!req.session?.user) return res.redirect('/');
   res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
+
+// Repository internals must never be served as public static files.
+const PRIVATE_STATIC_PATHS = new Set([
+  '/.env.example',
+  '/.gitignore',
+  '/README.md',
+  '/main.py',
+  '/package.json',
+  '/requirements.txt',
+  '/security-middleware.js',
+  '/session-token.js',
+  '/oauth-state.js',
+  '/server-secure.js',
+  '/server.js',
+  '/vercel.json'
+]);
+
+app.use((req, res, next) => {
+  let requestPath;
+  try {
+    requestPath = path.posix.normalize(decodeURIComponent(req.path));
+  } catch {
+    return res.sendStatus(400);
+  }
+
+  if (
+    PRIVATE_STATIC_PATHS.has(requestPath) ||
+    requestPath.startsWith('/.github/') ||
+    requestPath.startsWith('/docs/') ||
+    requestPath.startsWith('/scripts/') ||
+    requestPath.startsWith('/backend/') ||
+    requestPath.startsWith('/bot/') ||
+    requestPath.startsWith('/konfiguration/') ||
+    requestPath.startsWith('/tests/')
+  ) {
+    return res.sendStatus(404);
+  }
+  next();
+});
+
+// Keep index.html behind the explicit root route and serve only requested assets.
+app.use(express.static(__dirname, { index: false, dotfiles: 'deny' }));
 
 
 
 
 app.get('/auth/discord/login', (req, res) => {
+  const state = createOAuthState();
+  req.session.oauthState = state;
+
   const params = new URLSearchParams({
     client_id: CLIENT_ID,
     redirect_uri: REDIRECT_URI,
     response_type: 'code',
     scope: 'identify guilds',
-    prompt: 'consent'
+    prompt: 'consent',
+    state
   });
   res.redirect(`https://discord.com/api/oauth2/authorize?${params}`);
 });
 
 app.get('/auth/discord/callback', async (req, res) => {
-  const { code } = req.query;
+  const { code, state } = req.query;
   if (!code) return res.redirect('/?error=missing_code');
+
+  const expectedState = req.session?.oauthState;
+  if (req.session) delete req.session.oauthState;
+  if (!isValidOAuthState(state, expectedState)) {
+    return res.redirect('/?error=invalid_state');
+  }
+
   try {
     const tokenRes = await fetch(`${DISCORD_API}/oauth2/token`, {
       method: 'POST',
@@ -228,7 +294,7 @@ app.get('/auth/discord/callback', async (req, res) => {
     });
     if (!userRes.ok) throw new Error('User fetch failed');
     const user = await userRes.json();
-    req.session.accessToken = tokenData.access_token;
+    req.session.encryptedAccessToken = encryptAccessToken(tokenData.access_token);
     req.session.user = {
       id: user.id,
       username: user.username,
@@ -251,14 +317,14 @@ app.get('/auth/logout', (req, res) => {
 
 
 function requireAuth(req, res, next) {
-  if (!req.session?.accessToken) {
+  if (!req.accessToken) {
     return res.status(401).json({ error: 'not_authenticated' });
   }
   next();
 }
 
 async function requireGuildAdmin(req, res, next) {
-  if (!req.session?.accessToken) {
+  if (!req.accessToken) {
     return res.status(401).json({ error: 'not_authenticated' });
   }
   const guildId = req.params.guildId;
@@ -266,7 +332,7 @@ async function requireGuildAdmin(req, res, next) {
 
   try {
     const guildsRes = await fetch(`${DISCORD_API}/users/@me/guilds`, {
-      headers: { Authorization: `Bearer ${req.session.accessToken}` }
+      headers: { Authorization: `Bearer ${req.accessToken}` }
     });
     if (!guildsRes.ok) {
       if (guildsRes.status === 401) {
@@ -373,7 +439,7 @@ async function hasEffectivePremiumAccess(userId, guildId) {
 app.get('/api/guilds', requireAuth, async (req, res) => {
   try {
     const guildsRes = await fetch(`${DISCORD_API}/users/@me/guilds`, {
-      headers: { Authorization: `Bearer ${req.session.accessToken}` }
+      headers: { Authorization: `Bearer ${req.accessToken}` }
     });
     if (guildsRes.status === 401) {
       req.session = null;
