@@ -24,7 +24,8 @@ Für einen normalen Start: `npm start`.
 
 ## Automatische Prüfungen
 
-- `npm run check` prüft die Syntax der JavaScript-Dateien.
+- `npm run check` prüft die Syntax der JavaScript-Dateien und kontrolliert die HTML-Assets.
+- Der Asset-Check stellt außerdem sicher, dass `index.html` und `dashboard.html` keine Inline-Styles oder Inline-Scripts enthalten.
 - `python -m py_compile main.py` prüft die Python-Syntax.
 - GitHub Actions führt beide Prüfungen bei Pushes auf den relevanten Branches und bei Pull Requests aus.
 
