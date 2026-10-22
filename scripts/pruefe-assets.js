@@ -26,9 +26,18 @@ for (const htmlFile of htmlFiles) {
 
 const serverSource = fs.readFileSync(path.join(root, 'server.js'), 'utf8');
 const dashboardRouteIndex = serverSource.indexOf("app.get(['/dashboard.html', '/dashboard']");
-const staticMiddlewareIndex = serverSource.indexOf('app.use(express.static(__dirname))');
+const privateFilesGuardIndex = serverSource.indexOf('const PRIVATE_STATIC_PATHS = new Set([');
+const staticMiddlewareIndex = serverSource.indexOf('app.use(express.static(__dirname, { index: false, dotfiles: \'deny\' }))');
 if (dashboardRouteIndex === -1 || staticMiddlewareIndex === -1 || dashboardRouteIndex > staticMiddlewareIndex) {
   missing.push('server.js -> Dashboard-Loginprüfung muss vor express.static registriert sein');
+}
+if (privateFilesGuardIndex === -1 || privateFilesGuardIndex > staticMiddlewareIndex) {
+  missing.push('server.js -> Schutz interner Dateien muss vor express.static registriert sein');
+}
+for (const privatePath of ['/main.py', '/server.js', '/server-secure.js', '/security-middleware.js', '/package.json', '/requirements.txt', '/vercel.json']) {
+  if (!serverSource.includes("'" + privatePath + "'")) {
+    missing.push('server.js -> interne Datei nicht gesperrt: ' + privatePath);
+  }
 }
 
 let vercelConfig;
